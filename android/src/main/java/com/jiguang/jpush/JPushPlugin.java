@@ -114,6 +114,8 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
             openSettingsForNotification(call, result);
         } else if (call.method.equals("setWakeEnable")) {
             setWakeEnable(call, result);
+        }else if(call.method.equals("setLbsEnable")){
+            setLbsEnable(call,result);
         } else {
             result.notImplemented();
         }
@@ -129,6 +131,20 @@ public class JPushPlugin implements FlutterPlugin, MethodCallHandler {
             enable = false;
         }
         JCoreInterface.setWakeEnable(context,enable);
+    }
+
+    //关闭采集
+    private void setLbsEnable(MethodCall call, Result result){
+        HashMap<String, Object> map = call.arguments();
+        if (map == null) {
+            return;
+        }
+        Boolean enable = (Boolean) map.get("enable");
+        if (enable == null) {
+            enable = false;
+        }
+        Log.d("JPushPluginSetLbsEnable", "关闭采集");
+        JPushInterface.setLbsEnable(context,enable);
     }
 
     // 主线程再返回数据
