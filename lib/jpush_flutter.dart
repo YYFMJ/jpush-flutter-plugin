@@ -78,7 +78,7 @@ class JPush {
       case "onOpenNotification":
         return _onOpenNotification(call.arguments.cast<String, dynamic>());
       case "onReceiveMessage":
-        return _onReceiveMessage!(call.arguments.cast<String, dynamic>());
+        return _onReceiveMessage(call.arguments.cast<String, dynamic>());
       case "onReceiveNotificationAuthorization":
         return _onReceiveNotificationAuthorization(
             call.arguments.cast<String, dynamic>());
